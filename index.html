@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Moliri library</title>
+</head>
+<body onhashchange="pageChange()">
+    <div class="container">
+        <header class="header-top">
+            <img src="img/logo.svg" alt="logo">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#design">Design</a></li>
+                    <li><a href="#components">Components</a></li>
+                </ul>
+            </nav>
+            <img src="img/user-profile.svg" alt="user">
+        </header>
+
+        <div class="body">
+            <aside class="sideNav">
+                <input type="search" class="search" placeholder="Search...">
+
+                <!--<section class="section">
+                    <h4>General</h4>
+                    <ul>
+                        <li><a href="#">Buttons</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Breadcrumbs</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Data entry</h4>
+                    <ul>
+                        <li><a href="#">Checkbox</a></li>
+                        <li><a href="#">Radio</a></li>
+                        <li><a href="#">Inputs</a></li>
+                        <li><a href="#">Uploads</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Data entry</h4>
+                    <ul>
+                        <li><a href="#">Checkbox</a></li>
+                        <li><a href="#">Radio</a></li>
+                        <li><a href="#">Inputs</a></li>
+                        <li><a href="#">Uploads</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Data entry</h4>
+                    <ul>
+                        <li><a href="#">Checkbox</a></li>
+                        <li><a href="#">Radio</a></li>
+                        <li><a href="#">Inputs</a></li>
+                        <li><a href="#">Uploads</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Data entry</h4>
+                    <ul>
+                        <li><a href="#">Checkbox</a></li>
+                        <li><a href="#">Radio</a></li>
+                        <li><a href="#">Inputs</a></li>
+                        <li><a href="#">Uploads</a></li>
+                    </ul>
+                </section>
+                <section class="section">
+                    <h4>Data entry</h4>
+                    <ul>
+                        <li><a href="#">Checkbox</a></li>
+                        <li><a href="#">Radio</a></li>
+                        <li><a href="#">Inputs</a></li>
+                        <li><a href="#">Uploads</a></li>
+                    </ul>
+                </section>-->
+            </aside>
+            <main class="content">
+                <section id="design" class="page">
+                    <header class="page-title">
+                        <h1>Design overview</h1>
+                    </header>
+                    <p class="page-desc"> In this place you can find general information about set design rules on the moliri platform. More specific information such as buttons, inputs and more you will find in the Components page.
+                    <p>
+                    <div class="row-content-title">
+                            
+                    </div>
+                    <div class="row-content">
+                            
+                    </div>
+                </section>
+                <section id="colors" class="page">
+                    
+                </section>
+                <section id="components" class="page">
+                    <header class="page-title">
+                        <h1>Components overview</h1>
+                        <p class="page-desc">In this place you are able to find a large number of UI components prepared and ready to use in exact code specially for moliri platform. Consistently, we improve them and provide new components to make developers’ work more efficent and improve company’s workflow.
+                        <p>
+                    </header>
+                    <div class="row-content-title general">
+                        
+                    </div>
+                    <div class="row-component-content general-content">
+                            
+                    </div>
+                    <div class="row-content-title data-entry">
+                    </div>
+                    <div class="row-component-content data-entry-content">
+                            
+                    </div>
+                </section>
+                <section id="section" class="page">
+                    <div class="abcd"></div>
+                    <div class="abc"></div>
+                </section>
+            </main>
+        </div>
+
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+    <!-- SPA functionality  -->
+    <script src="js/spa.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <!-- main js file -->
+    <script src="js/main.js"></script>
+</body>
+</html>
