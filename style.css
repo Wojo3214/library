@@ -207,4 +207,40 @@ aside {
     margin-top: 10px;
 }
 
+.section-content{
+    margin-top: 32px;
+}
 
+/***COLORS PAGE***/
+
+.colors{
+    width: 100%;
+    display: flex;
+}
+
+.color-container{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 8px;
+}
+
+.color-view{
+    width: 50px;
+    height: 50px;
+    border-radius: 200px;
+}
+
+.color-information{
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/***TYPOGRAPHY PAGE***/
+.typography-information{
+    margin-top: 16px;
+}
+
+.typography-explanation{
+    color: #8197B0;
+    font-size: 14px;
+}

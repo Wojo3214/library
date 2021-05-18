@@ -166,7 +166,7 @@ function appendSectionDetails(id) {
             <p class="section-desc">${specificSection.description}</p>
         </header>
     `;
-    document.querySelector('.abcd').innerHTML = htmlTemplate;
+    document.querySelector('.section-name').innerHTML = htmlTemplate;
     console.log(id);
     appendState(id);
 }
@@ -178,15 +178,50 @@ function appendState(id){
     for (let state of states) {
         console.log(state.category);
         
-        if (state.category == id) {
+        if (state.category == id && id == "Colors") {
             let specificState = state;
 
             htmlTemplate +=`
-            <article class="table-content-item">
-                <h4>${specificState.name}</h4>
-            </article>`
+                <div class="color-container">
+                    <div class="color-view" style="background-color: ${specificState.hexcode}" onclick="copyToClipboard()"></div>
+                    <div class="color-information">
+                        <h4 class="color-name">${specificState.name}</h4>
+                        <p class="color-code">${specificState.hexcode}</p>
+                    </div>
+                </div>`
+            
+        }   else if(state.category == id && id == "Typography") {
+            let specificState = state;
+
+            console.log(specificState);
+
+            htmlTemplate +=`
+            <div class="typography-container">
+                <div class="typography-information">
+                    <p class="typography-name" style="font-size: ${specificState.size}; font-family: ${specificState.typo}">${specificState.name}</p>
+                    <p class="typography-explanation">${specificState.description}</p>
+                </div>
+            </div>`
+
+        }   else {
+            console.log("not working");
         }
     
     }
-    document.querySelector(".abc").innerHTML = htmlTemplate;
+    if (id == "Colors"){
+        document.querySelector(".section-content").innerHTML = `<div class="colors">` + htmlTemplate + `</div>`;
+    }   else {
+        document.querySelector(".section-content").innerHTML = htmlTemplate;
+    }
 }
+
+function copyToClipboard() {
+    var text = document.querySelector(".color-code").innerText;
+    var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = text;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+    alert("Copied the text: " + elem.value);
+  }
