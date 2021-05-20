@@ -39,7 +39,7 @@ _sectionsRef.onSnapshot(function (snapshotData) {
    //appendNavFoundation();
 });
 
-
+//Append title function
 function appendTitle(){
     let htmlTemplate = "";
 
@@ -49,6 +49,7 @@ function appendTitle(){
     document.querySelector(".row-content-title").innerHTML = htmlTemplate;
 };
 
+//Append foundation's categories
 function appendFoundation(section){
     let htmlTemplate = "";
     
@@ -70,6 +71,7 @@ function appendFoundation(section){
     document.querySelector(".row-content").innerHTML = htmlTemplate;
 }
 
+//Append navigation
 function appendNav(section){
     let htmlTemplate = "";
     for( section of sections) {
@@ -121,6 +123,7 @@ function appendNavFoundation(section){
 }
 */
 
+//Append general section on the component page
 function appendGeneral(section){
     let htmlTemplate = "";
     let categoryTitle = `<h2>General</h2>`;
@@ -144,6 +147,7 @@ function appendGeneral(section){
     document.querySelector(".general").innerHTML = categoryTitle;
 }
 
+//Append data entry section on the component page
 function appendDataEntry(section){
     let htmlTemplate = "";
     let categoryTitle = `<h2>Data entry</h2>`;
@@ -167,6 +171,7 @@ function appendDataEntry(section){
     document.querySelector(".data-entry").innerHTML = categoryTitle;
 }
 
+//Append feedback section on the component page
 function appendFeedback(section){
     let htmlTemplate = "";
     let categoryTitle = `<h2>Feedback</h2>`;
@@ -191,6 +196,7 @@ function appendFeedback(section){
 
 }
 
+//Append detailed information of choosen category
 function appendSectionDetails(id) {
     console.log(id);
 
@@ -212,6 +218,7 @@ function appendSectionDetails(id) {
     appendState(id);
 }
 
+//Append states of detailed information of choosen category
 function appendState(id){
     let htmlTemplate = "";
     console.log(id);
@@ -301,6 +308,8 @@ function openCodePanel(name, code){
     document.querySelector(".code").innerHTML = htmlTemplateCode;
 }
 */
+
+//Copy to clipboard function
 function copyToClipboard() {
     var text = document.querySelector(".color-code").innerText;
     var elem = document.createElement("textarea");
@@ -313,6 +322,7 @@ function copyToClipboard() {
     //alert("Copied the text: " + elem.value);
 }
 
+//tooltip when content is copied
 function tooltipSuccess(value){
     console.log(value);
     let tooltip = document.querySelector(".tooltip");
@@ -321,15 +331,18 @@ function tooltipSuccess(value){
     //tooltip.style.bottom = "5%";
 }
 
+//Close tooltip function
 document.querySelector(".tooltip").addEventListener("click", function() {
     let tooltip = document.querySelector(".tooltip");
     tooltip.style.cssText = "display: none; bottom: -40%;";
 });
 
+//SEARCH function
 function search(value) {
     console.log(value);
     let searchValue = value.toLowerCase();
     let filteredSections = sections.filter(section => section.name.toLowerCase().includes(searchValue));
+    console.log("Filtered: "+ filteredSections);
     appendNav(filteredSections);
 
     if(filteredSections.length === 0){
@@ -337,7 +350,7 @@ function search(value) {
     }
 }
 
-// the message that appears if there are no results for the search
+//Message if there are no results for the search
 function noResults() {
 
     let template = `
