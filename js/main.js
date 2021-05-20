@@ -33,8 +33,10 @@ _sectionsRef.onSnapshot(function (snapshotData) {
     appendFoundation(sections);
     appendGeneral(sections);
     appendDataEntry(sections);
-    appendNavComponents();
-    appendNavFoundation();
+    appendFeedback(sections);
+    appendNav(sections);
+    //appendNavComponents();
+   //appendNavFoundation();
 });
 
 
@@ -68,8 +70,23 @@ function appendFoundation(section){
     document.querySelector(".row-content").innerHTML = htmlTemplate;
 }
 
+function appendNav(section){
+    let htmlTemplate = "";
+    for( section of sections) {
+        htmlTemplate +=`
+            
+            <section class="nav-item">
+                <a href="#section" class="nav-item-link" onclick="appendSectionDetails('${section.id}')">${section.name}</a>
+            </section>
+        `
+    }
+    document.querySelector(".sideNavItems").innerHTML = htmlTemplate;
+}
+
+/*
 function appendNavComponents(section){
     let htmlTemplate = "";
+    let searchInput = `<input type="search" class="search" placeholder="Search...">`;
     
         for( section of sections) {
             if (section.category.includes("Components")) {
@@ -82,11 +99,12 @@ function appendNavComponents(section){
             `
             }
         }
-    document.querySelector(".sideNav").innerHTML = htmlTemplate;
+    document.querySelector(".sideNav").innerHTML = searchInput + htmlTemplate;
 }
 
 function appendNavFoundation(section){
     let htmlTemplate = "";
+    let searchInput = `<input type="search" class="search" placeholder="Search...">`;
     
         for( section of sections) {
             if (section.category.includes("Foundation")) {
@@ -99,9 +117,9 @@ function appendNavFoundation(section){
             `
             }
         }
-    document.querySelector(".sideNav").innerHTML = htmlTemplate;
+    document.querySelector(".sideNav").innerHTML = searchInput + htmlTemplate;
 }
-
+*/
 
 function appendGeneral(section){
     let htmlTemplate = "";
@@ -147,6 +165,29 @@ function appendDataEntry(section){
 
     document.querySelector(".data-entry-content").innerHTML = htmlTemplate;
     document.querySelector(".data-entry").innerHTML = categoryTitle;
+}
+
+function appendFeedback(section){
+    let htmlTemplate = "";
+    let categoryTitle = `<h2>Feedback</h2>`;
+    console.log(categoryTitle);
+    
+    for( section of sections) {
+        if (section.subtitle.includes("Feedback")) {
+
+        console.log(section.name);
+        console.log(section.category);
+        htmlTemplate +=`
+            <article class="table-content-item">
+                <h4>${section.name}</h4>
+                <a href="#section" class="content-item-link" onclick="appendSectionDetails('${section.id}')"><img src="${section.img}" class="content-item-img" alt="${section.name}"></a>
+            </article>
+        `
+        }
+    }
+
+    document.querySelector(".feedback-content").innerHTML = htmlTemplate;
+    document.querySelector(".feedback").innerHTML = categoryTitle;
 
 }
 
@@ -203,18 +244,63 @@ function appendState(id){
                 </div>
             </div>`
 
-        }   else {
+        }   else if (state.category == id && state.section == "Components") {
+            let specificState = state;
+
+            console.log("specificState");
+
+            htmlTemplate +=`
+            <div class="component-container">
+                <div class="component-information">
+                    <p class="component-name">${specificState.name}</p>
+                    <div class="icons">
+                        <img src="icons/code.svg" class="icons-item" alt="Show code">
+                        <img src="icons/info.svg" class="icons-item" alt="Show additional information">
+                    </div>
+                </div>
+                    
+                <div class="component-example">${specificState.code}</div>
+                </div>
+            </div>`
+
+        } else {
             console.log("not working");
         }
     
     }
     if (id == "Colors"){
-        document.querySelector(".section-content").innerHTML = `<div class="colors">` + htmlTemplate + `</div>`;
+        document.querySelector(".section-content").innerHTML = `<div class="flex-container">` + htmlTemplate + `</div>`;
+        console.log("flexbox");
     }   else {
         document.querySelector(".section-content").innerHTML = htmlTemplate;
     }
 }
+/*
+function showSourceCode(toShow){
+    sourceCode.value = toShow.innerHTML;
+}
 
+function openCodePanel(name, code){
+    console.log(name, code);
+    let codeContainer = document.querySelector(".code");
+    codeContainer.style.display = "block";
+    codeContainer.style.bottom = "0px";
+
+    let htmlTemplateCode = "";
+    htmlTemplateCode = `
+    <header class="code-header">
+        <h4>${name}</h4>
+        <div class="icons">
+
+        </div>
+    </header>
+    <div class="code-overview">
+        <p>${code}</p>
+    </div>`;
+
+    document.querySelector(".code").innerHTML = htmlTemplateCode;
+}
+*/
 function copyToClipboard() {
     var text = document.querySelector(".color-code").innerText;
     var elem = document.createElement("textarea");
@@ -223,5 +309,39 @@ function copyToClipboard() {
     elem.select();
     document.execCommand("copy");
     document.body.removeChild(elem);
-    alert("Copied the text: " + elem.value);
-  }
+    tooltipSuccess(elem.value);
+    //alert("Copied the text: " + elem.value);
+}
+
+function tooltipSuccess(value){
+    console.log(value);
+    let tooltip = document.querySelector(".tooltip");
+    tooltip.innerHTML = `<p>Copied ${value}</p>`;
+    tooltip.style.cssText = "display: block; bottom: 5%;";
+    //tooltip.style.bottom = "5%";
+}
+
+document.querySelector(".tooltip").addEventListener("click", function() {
+    let tooltip = document.querySelector(".tooltip");
+    tooltip.style.cssText = "display: none; bottom: -40%;";
+});
+
+function search(value) {
+    console.log(value);
+    let searchValue = value.toLowerCase();
+    let filteredSections = sections.filter(section => section.name.toLowerCase().includes(searchValue));
+    appendNav(filteredSections);
+
+    if(filteredSections.length === 0){
+         noResults();
+    }
+}
+
+// the message that appears if there are no results for the search
+function noResults() {
+
+    let template = `
+         <p class="no-results-info">Sorry, we couldn't find this for you!</p>
+    `;
+    document.querySelector(".results").innerHTML = template;
+}

@@ -103,6 +103,7 @@ aside {
     background-color: #E9E9E9;
     font-size: 14px;
     padding: 5px 10px;
+    margin-bottom: 16px;
     border-radius: 5px;
     border: none;
 }
@@ -141,6 +142,7 @@ aside {
 .content {
     overflow-y: scroll;
     padding: 20px;
+    position: relative;
 }
 
 .main-content{
@@ -213,27 +215,68 @@ aside {
 
 /***COLORS PAGE***/
 
-.colors{
+.flex-container{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .color-container{
     display: flex;
     justify-content: flex-start;
-    margin: 0 8px;
+    margin: 0 8px 16px 8px;
 }
 
 .color-view{
     width: 50px;
     height: 50px;
     border-radius: 200px;
+    cursor: pointer;
 }
 
 .color-information{
     margin-left: 8px;
     font-size: 14px;
 }
+
+.tooltip{
+    position: absolute;
+    left: 50%;
+    bottom: -40%;
+    display: none;
+    padding: 8px 16px;
+    transform: translateX(-50%);
+    background-color: #DFF6ED;
+    border: 1px solid #38C98D;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+/**
+.activetooltip{
+    animation: tooltipAnimation 6s;
+}
+
+@keyframes tooltipAnimation{
+    0%{
+        bottom: -40%;
+        display: none;
+    }
+    5%{
+        display: block;
+    }
+    10%{
+        bottom: 5%;
+    }
+    90%{
+        bottom: 5%;
+    }
+    100%{
+        bottom: -40%;
+        display: none;
+    }
+}**/
 
 /***TYPOGRAPHY PAGE***/
 .typography-information{
@@ -243,4 +286,115 @@ aside {
 .typography-explanation{
     color: #8197B0;
     font-size: 14px;
+}
+
+/***COMPONENTS***/
+.component-container{
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.component-information{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.component-name{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.icons{
+    display: flex;
+}
+
+.icons-item{
+    margin-left: 8px;
+}
+
+.component-container > .component-example{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 16px 32px;
+    border-radius: 5px;
+    border: 2px solid #AEAEAE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.code{
+    position: absolute;
+    height: 40vh;
+    width: 100%;
+    bottom: -1000px;
+    display: none;
+    left: 0px;
+    background-color: #242E48;
+}
+
+.code-header{
+    background-color: #f2f2f2;
+    padding: 8px 32px;
+    box-sizing: border-box;
+}
+
+.code-overview{
+    color: #fefefe;
+}
+/*Buttons*/
+.btn{
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 300px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    color: #fefefe;
+}
+
+.primary{
+    background: #3CD495;
+    background: linear-gradient(0deg, #35B07D 0%, #3CD495 100%);
+}
+
+.hover{
+    background: #9FE5C8;
+    background: linear-gradient(0deg, #75CFAA 0%, #9FE5C8 100%);
+}
+
+.disabled{
+    background: #FD3B79;
+    background: linear-gradient(0deg, #CA2559 0%, #FD3B79 100%);
+}
+
+.delete{
+    background: #C1C1C1;
+    background: linear-gradient(0deg, #9A9898 0%, #C1C1C1 100%);
+}
+
+/*Alerts*/
+.alert{
+    font-size: 14px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    width: 75%;
+    border-radius: 10px;
+}
+
+.alert-success{
+    background-color: #DFF6ED;
+    border: 1px solid #38C98D;
+}
+
+.alert-warning{
+    background-color: #FAEBC7;
+    border: 1px solid #EBB22C;
+}
+
+.alert-error{
+    background-color: #FDECF2;
+    border: 1px solid #EB2E6A;
 }
