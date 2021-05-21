@@ -74,7 +74,7 @@ function appendFoundation(section){
 //Append navigation
 function appendNav(section){
     let htmlTemplate = "";
-    for( section of sections) {
+    for(const section of sections) {
         htmlTemplate +=`
             
             <section class="nav-item">
@@ -231,7 +231,7 @@ function appendState(id){
 
             htmlTemplate +=`
                 <div class="color-container">
-                    <div class="color-view" style="background-color: ${specificState.hexcode}" onclick="copyToClipboard()"></div>
+                    <div class="color-view" style="background-color: ${specificState.hexcode}" onclick="copyToClipboard('${specificState.hexcode}')"></div>
                     <div class="color-information">
                         <h4 class="color-name">${specificState.name}</h4>
                         <p class="color-code">${specificState.hexcode}</p>
@@ -310,11 +310,11 @@ function openCodePanel(name, code){
 */
 
 //Copy to clipboard function
-function copyToClipboard() {
-    var text = document.querySelector(".color-code").innerText;
+function copyToClipboard(hexcode) {
+    var hex = hexcode;
     var elem = document.createElement("textarea");
     document.body.appendChild(elem);
-    elem.value = text;
+    elem.value = hex;
     elem.select();
     document.execCommand("copy");
     document.body.removeChild(elem);
